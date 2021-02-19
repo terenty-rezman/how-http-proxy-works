@@ -1,0 +1,12 @@
+{
+  "name": "how-http-proxy-works",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node http_proxy.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
