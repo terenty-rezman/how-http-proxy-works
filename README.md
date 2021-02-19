@@ -14,7 +14,7 @@ $ curl http://www.google.com -vs -x 127.0.0.1:4444
 ```
 2) HTTPS tunneling request:
 ```
-curl https://www.google.com -vs -x 127.0.0.1:4444
+$ curl https://www.google.com -vs -x 127.0.0.1:4444
 
 ```
 see the sources for details
