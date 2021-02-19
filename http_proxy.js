@@ -16,7 +16,7 @@ const { URL } = require('url');
 //    we could mangle request headers for example
 //    NOT incoming NOR outgoing connections are encrypted !
 // NOTE that although we pipe request and response in the code below its not true tunneling, because we could have just read the whole request
-// and the whole response, analyze them and only then forward them
+// and the whole response before forwarding, analyze them and only then forward
 // https://stackoverflow.com/questions/20351637/how-to-create-a-simple-http-proxy-in-node-js
 const proxy = http.createServer((client_req, client_res) => {
     const { port, hostname } = new URL(client_req.url);
