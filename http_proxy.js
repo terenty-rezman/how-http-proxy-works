@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 const net = require('net');
 const { URL } = require('url');
 
@@ -19,17 +20,19 @@ const { URL } = require('url');
 // and the whole response before forwarding, analyze them and only then forward
 // https://stackoverflow.com/questions/20351637/how-to-create-a-simple-http-proxy-in-node-js
 const proxy = http.createServer((client_req, client_res) => {
-    const { port, hostname } = new URL(client_req.url);
+    const url = new URL(client_req.url);
 
     const options = {
-        port: port || 80,
-        host: hostname,
+        protocol: url.protocol,
+        port: url.port || 80,
+        host: url.hostname,
         method: client_req.method,
         headers: client_req.headers,
-        path: client_req.path
+        path: url.pathname + url.search
     };
 
-    const proxy = http.request(options, function (res) {
+    const protocol = options.protocol === "https:" ? https : http;
+    const proxy = protocol.request(options, function (res) {
         client_res.writeHead(res.statusCode, res.headers)
         res.pipe(client_res, { end: true });
     });
