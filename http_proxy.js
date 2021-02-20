@@ -13,7 +13,7 @@ const { URL } = require('url');
 // _) for destination host it looks like we initiated the request in the first place
 // 5) now when we have response from the destination target host we can reply to the client (1st connection) with the response we got from destination host
 // 6) we act as man in the middle and since HTTP is totally unencrypted we can interfere whenever we like and eavesdrop whatever we like
-//    we could mangle request headers for example
+//    we could manipulate request headers for example
 //    NOT incoming NOR outgoing connections are encrypted !
 // NOTE that although we pipe request and response in the code below its not true tunneling, because we could have just read the whole request
 // and the whole response before forwarding, analyze them and only then forward
